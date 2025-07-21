@@ -1,29 +1,24 @@
-#include<bits/stdc++.h>
-using namespace std;
-int secondlargets(vector<int >arr){
-    int n =arr.size();
-    
-    if(n<2) return -1;
-    int firstlargest=-1;
-    int secondlarget=-1;
-    for(int i =0;i<n;i++){
-        if(arr[i]>firstlargest){
-            secondlarget=firstlargest;
-            firstlargest=arr[i];
-           
+class Solution {
+  public:
+    int getSecondLargest(vector<int> &arr) {
+        // code here
+        int n =arr.size();
+        
+        int largest=-1;
+        int second =-1;
+        for(int i =0;i<n;i++){
+            if(arr[i]>largest ){
+                second=largest;    
+                largest=arr[i];
         }
-        else if(arr[i]>secondlarget&& arr[i]<firstlargest){
-            secondlarget=arr[i];
+        else if(arr[i]>second&&arr[i]<largest){
+            second = arr[i];
         }
-
     }
-    return secondlarget;
-
-}
-int main(){
-    vector<int >arr={12 ,35, 1 ,10, 34, 1};
-    int result=secondlargets(arr);
-    cout<<"Your ans is:"<<result;
-
-
-}
+    if(largest==second ) return -1;
+    else{
+        return second;
+    }
+    
+    }
+};
